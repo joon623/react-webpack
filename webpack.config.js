@@ -1,6 +1,6 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const port = process.env.PORT || 3000;
 
 module.exports = {
@@ -8,7 +8,7 @@ module.exports = {
   mode: "development",
 
   // 애플리케이션 시작 경로
-  entry: "./src/index.js",
+  entry: "./src/index.tsx",
 
   // 번들된 파일 경로
   output: {
@@ -41,6 +41,11 @@ module.exports = {
         test: /\.css$/i,
         use: ["style-loader", "css-loader"],
       },
+      {
+        test: /\.(ts|tsx)$/,
+        use:'ts-loader',
+        exclude: /node_modules/
+      }
     ],
   },
 
@@ -48,6 +53,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: "public/index.html",
     }),
+    new ForkTsCheckerWebpackPlugin()
   ],
 
   // 개발 서버 설정
@@ -56,4 +62,12 @@ module.exports = {
     port: port,
     open: true, // open page when start
   },
+
+  // 웹팩이 알아서 경로나 확장자를 처리할 수 있게 도와주는 옵션
+  resolve: {
+    modules: ["node_modules"],
+		extensions: ['.js', '.jsx', ".tsx", ".ts"]
+	},
+
+  devtool: 'inline-source-map'
 };

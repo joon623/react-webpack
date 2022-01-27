@@ -1,12 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import "./app.css";
 
-function App() {
+type AppType = { 
+  text: string
+}
+
+function App({text}: AppType) {
+  const [number, setNumber] = useState(0);
+  console.log(typeof text)
   return (
     <>
       <Div className="app">hello Webpack!!!</Div>
-      <div className="test">test</div>
+      <div className="test">{text}</div>
     </>
   );
 }

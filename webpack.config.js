@@ -1,6 +1,6 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
 const port = process.env.PORT || 3000;
 
 module.exports = {
@@ -43,9 +43,9 @@ module.exports = {
       },
       {
         test: /\.(ts|tsx)$/,
-        use:'ts-loader',
-        exclude: /node_modules/
-      }
+        use: "ts-loader",
+        exclude: /node_modules/,
+      },
     ],
   },
 
@@ -53,7 +53,8 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: "public/index.html",
     }),
-    new ForkTsCheckerWebpackPlugin()
+    // 이 플로그인은 타입스크립트를 빠르게 컴파일링하게하고, 별도의 프로세스에서 타입체크도 해준다.
+    new ForkTsCheckerWebpackPlugin(),
   ],
 
   // 개발 서버 설정
@@ -61,13 +62,15 @@ module.exports = {
     host: "localhost",
     port: port,
     open: true, // open page when start
+    // History API 또는 react-router 등을 사용하는 경우 새로고침 시 404 에러를 해결해주는 option
+    historyApiFallback: true,
   },
 
   // 웹팩이 알아서 경로나 확장자를 처리할 수 있게 도와주는 옵션
   resolve: {
     modules: ["node_modules"],
-		extensions: ['.js', '.jsx', ".tsx", ".ts"]
-	},
+    extensions: [".js", ".jsx", ".tsx", ".ts"],
+  },
 
-  devtool: 'inline-source-map'
+  devtool: "inline-source-map",
 };

@@ -13,6 +13,7 @@ function App({ text }: AppType) {
     <>
       <Div className="app">hello Webpack!!!</Div>
       <div className="test">{text}</div>
+      <div className="test">github action succeed</div>
     </>
   );
 }

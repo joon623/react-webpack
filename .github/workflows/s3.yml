@@ -3,12 +3,15 @@ name: s3-deploy
 on:
   push:
     branch:
-      - master
+      - main
 
 jobs:
   build:
     runs-on: ubuntu-18.04
     steps:
+      - name: checkout source code
+        run: actions/checkout@main
+
       - name: Install Dependencies # 의존 파일 설치
         run: npm install
 

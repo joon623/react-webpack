@@ -1,6 +1,7 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const port = process.env.PORT || 3000;
 
 module.exports = {
@@ -55,6 +56,8 @@ module.exports = {
     }),
     // 이 플로그인은 타입스크립트를 빠르게 컴파일링하게하고, 별도의 프로세스에서 타입체크도 해준다.
     new ForkTsCheckerWebpackPlugin(),
+    // 기존의 output 폴더를 비운다.
+    new CleanWebpackPlugin(),
   ],
 
   // 개발 서버 설정

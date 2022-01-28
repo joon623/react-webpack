@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import styled from "styled-components";
-import "./app.css";
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import './app.css';
 
 type AppType = {
   text: string;
@@ -14,6 +14,9 @@ function App({ text }: AppType) {
       <Div className="app">hello Webpack!!!</Div>
       <div className="test">{text}</div>
       <div className="test">github action succeed</div>
+
+      <div className="test">{text}</div>
+      <div className="test">{text}</div>
     </>
   );
 }

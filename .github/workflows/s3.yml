@@ -7,10 +7,10 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
+
     steps:
-      - name: checkout source code
-        run: actions/checkout@main
+      - uses: actions/checkout@v2
 
       - name: Install Dependencies # 의존 파일 설치
         run: npm install

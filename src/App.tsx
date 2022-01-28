@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import "./app.css";
 
-type AppType = { 
-  text: string
-}
+type AppType = {
+  text: string;
+};
 
-function App({text}: AppType) {
-  const [number, setNumber] = useState(0);
-  console.log(typeof text)
+function App({ text }: AppType) {
+  const [number, setNumber] = useState<number>(0);
+
   return (
     <>
       <Div className="app">hello Webpack!!!</Div>

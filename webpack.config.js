@@ -5,6 +5,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const port = process.env.PORT || 3000;
 
+// webpack 5에서는 file loader는 deprecated 됐다.
 module.exports = {
   // 개발환경
   mode: "development",
@@ -17,6 +18,7 @@ module.exports = {
     // bundled compiled 파일
     path: path.join(__dirname, "/dist"), //__dirname : 현재 디렉토리, dist 폴더에 모든 컴파일된 하나의 번들파일을 넣을 예정
     filename: "index_bundle.js",
+    // 참고 https://yamoo9.gitbook.io/webpack/webpack/webpack-loaders/file-loader
   },
 
   module: {
@@ -48,6 +50,10 @@ module.exports = {
         use: "ts-loader",
         exclude: /node_modules/,
       },
+      {
+        test: /\.(png|jpe?g|gif|svg|webp)$/i,
+        type: "asset/resource"
+      }
     ],
   },
 

@@ -1,6 +1,7 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const port = process.env.PORT || 3000;
 
@@ -40,7 +41,7 @@ module.exports = {
       },
       {
         test: /\.css$/i,
-        use: ["style-loader", "css-loader"],
+        use: [MiniCssExtractPlugin.loader, "css-loader"],
       },
       {
         test: /\.(ts|tsx)$/,
@@ -58,6 +59,10 @@ module.exports = {
     new ForkTsCheckerWebpackPlugin(),
     // 기존의 output 폴더를 비운다.
     new CleanWebpackPlugin(),
+    // 여러 css 파일을 하나의 css 파일로 합치는 플러그인
+    new MiniCssExtractPlugin({
+      filename: "app.css"
+    })
   ],
 
   // 개발 서버 설정

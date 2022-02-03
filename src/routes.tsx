@@ -1,7 +1,8 @@
-import React from "react";
-import { BrowserRouter, Routes, Route, Link, Outlet } from "react-router-dom";
-import App from "./App";
-import NotFound from "./NotFound";
+import React from 'react';
+import { BrowserRouter, Routes, Route, Link, Outlet } from 'react-router-dom';
+import App from './App';
+import Counter from './features/counter/Counter';
+import NotFound from './NotFound';
 
 function Router() {
   return (
@@ -11,6 +12,7 @@ function Router() {
           <Route index element={<App text="index component" />} />
           <Route path="invoices" element={<Invoices />} />
           <Route path="dashboard" element={<Dashboard />} />
+          <Route path="counter" element={<Counter />} />
         </Route>
         <Route element={<PageLayout />}>
           <Route path="/privacy" element={<Privacy />} />
@@ -30,8 +32,9 @@ function Layout() {
     <div>
       <h1>Welcome to the webpack app!</h1>
       <nav>
-        <Link to="invoices">Invoices</Link> |{" "}
-        <Link to="dashboard">Dashboard</Link>
+        <Link to="invoices">Invoices</Link> |{' '}
+        <Link to="dashboard">Dashboard</Link> |{' '}
+        <Link to="Counter">Counter</Link>
       </nav>
       <div className="content">
         <Outlet />

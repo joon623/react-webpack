@@ -76,9 +76,18 @@ module.exports = {
 
   // 웹팩이 알아서 경로나 확장자를 처리할 수 있게 도와주는 옵션
   resolve: {
+    // 어디서 resolve 할 것 찾아야 하는지 알려준다!
     modules: ["node_modules"],
+    // 확장자 명칭을 생략 가능한 것들을 설정해준다!
     extensions: [".js", ".jsx", ".tsx", ".ts"],
+    // 별칭을 써줌으로써 절대경로를 설정해준다!
+    alias: { 
+      '@src': path.resolve(__dirname, 'src')
+    }
   },
 
   devtool: "inline-source-map",
 };
+
+// 절대 경로 참고
+//https://chanyeong.com/blog/post/35

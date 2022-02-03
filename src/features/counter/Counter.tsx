@@ -1,6 +1,7 @@
 import React from 'react';
 import { decrement, increment } from './counterSlice';
 import { useAppDispatch, useAppSelector } from '../../../hooks/useToolkit';
+import AbsolutePath from '@src/AbsolutePath';
 import styles from './Counter.module.css';
 
 function Counter() {
@@ -24,6 +25,7 @@ function Counter() {
         >
           Decrement
         </button>
+        <AbsolutePath />
       </div>
     </div>
   );

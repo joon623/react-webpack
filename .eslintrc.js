@@ -29,4 +29,16 @@ module.exports = {
     // prettier 규칙을 어기면 error 발생
     "prettier/prettier": ["error"],
   },
+
+  settings: {
+		'import/resolver': {
+			alias: {
+				map: [
+					['@src', './src']
+				]
+			}
+		}
+	}
 };
+
+//https://chanyeong.com/blog/post/35
